@@ -1,0 +1,18 @@
+package com.capge.dao;
+
+import com.capge.entity.Student;
+
+import java.util.List;
+
+public interface StudentDAO {
+    void save(Student student);
+    List<Student> fetchAll();
+    Student fetchById(int id);
+    void updateMarks(int id, double marks);
+    void delete(int id);
+    List<Student> sortedByMarks();
+    List<Student> sortedByAgeDesc();
+    List<Student> filterByDept(String dept);
+    List<Student> nativeFetch();
+    void nativeUpdateMarks(int id, double marks);
+}
