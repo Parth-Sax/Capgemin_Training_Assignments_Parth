@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="kit_id" class="map_dependency_injection.Kit">
+        <constructor-arg name="name" value="SG"></constructor-arg>
+        <constructor-arg name="items">
+            <map>
+                <entry key="Bat" value="50000"></entry>
+                <entry key="Ball" value="2000"></entry>
+                <entry key="Helmet" value="20000"></entry>
+            </map>
+        </constructor-arg>
+    </bean>
+</beans>
