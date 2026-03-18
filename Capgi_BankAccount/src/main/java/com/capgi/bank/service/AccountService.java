@@ -11,4 +11,8 @@ public interface AccountService {
     AccountResponseDto getAccountById(Integer id);
 
     List<AccountResponseDto> findAll();
+
+    AccountResponseDto exceptionalHandlingGetAccountById(Integer id);
+
+    AccountResponseDto updateAccount(Integer id, AccountDto accountDto);
 }

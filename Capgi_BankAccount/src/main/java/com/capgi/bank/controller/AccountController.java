@@ -7,6 +7,7 @@ import com.capgi.bank.entity.dto.ResponseDto;
 import com.capgi.bank.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,5 +35,35 @@ public class AccountController {
     public ResponseEntity<ResponseDto> findAll() {
         List<AccountResponseDto> accountResponseDtoList = accountService.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(AccountConstant.STATUS_200, AccountConstant.MESSAGE_get, accountResponseDtoList));
+    }
+
+    @GetMapping("/byidException")
+    public ResponseEntity<ResponseDto> exceptionalHandlingGetAccountById(@RequestParam Integer id) {
+        AccountResponseDto accountDto = accountService.exceptionalHandlingGetAccountById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(AccountConstant.STATUS_200, AccountConstant.MESSAGE_get, accountDto));
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<ResponseDto> update(@RequestParam Integer id, @RequestBody AccountDto accountDto){
+        accountService.updateAccount(id, accountDto);
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(AccountConstant.STATUS_200, "Updated ",null));
+    }
+
+
+    @PostMapping(
+            value = "/xml",
+            consumes = MediaType.APPLICATION_XML_VALUE
+    )
+    public ResponseEntity<ResponseDto> createAccountXMl(
+            @RequestBody AccountDto accountDto) {
+        accountService.createAccount(accountDto);
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(new ResponseDto(
+                        AccountConstant.STATUS_200,
+                        AccountConstant.MESSAGE_201,
+                        null
+                ));
     }
 }
