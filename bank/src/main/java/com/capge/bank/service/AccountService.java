@@ -1,4 +1,4 @@
-package com.capge.bank.service;
+package com.capge.bank.service.impl;
 
-public class AccountService {
+public interface AccountService {
 }

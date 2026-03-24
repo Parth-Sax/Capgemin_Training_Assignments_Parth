@@ -1,4 +1,4 @@
 package com.capge.bank.service;
 
-public class TransactionService {
+public interface TransactionService {
 }
